@@ -59,6 +59,7 @@ public class AgentState implements IAgentState {
      *
      * @return String representation of state name.
      */
+    @Override
     public String getName() {
         return this.name;
     }

@@ -34,6 +34,13 @@ public interface IAgentState<T extends IAgent>
      * @return    Agent which owns this state
      */
     public T getAgent();
+        
+    /**
+     * The name of this state.
+     *
+     * @return String representation of state name.
+     */
+    public String getName();
     
     /**
      * A state can be associated with only one agent. For efficiency, there
