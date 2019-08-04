@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+    <head>
+        <title>The fuse.gui package</title>
+    </head>
+    <body bgcolor="white">
+  
+        The fuse.gui package sits directly on top of the FUSE framework providing means for any Agent to be GUI'd.
+
+        <h2>GUI Package</h2>
+
+        <p>
+            To "turn the GUI on" there are 3 requirements:
+            <ul>
+                <li>Create an instance of Space in which you're Agents should be Viewable. Use a GUIUniverse instead of a SimpleUniverse, passing your Space object
+                in the Constructor. The GUIUniverse makes calls to the FUSEGUI singleton allowing it to update the GUI on an event-by-event basis. </li>
+                <li>Make your Agents implement an extension of the Paintable interface. Which extension you implement
+                yields different levels of functionality. See fuse.gui.PaintViewable and fuse.gui.PaintClickable. 
+                Also, see fuse.gui.Reflector to allow the gui-user to interact with your Agent's methods directly.</li>
+                <li>Create an extension of the fuse.gui.ViewFrame class (or use the provided SimpleView) and register
+                your Agents with the appropriate View. </li>
+            </ul>
+        </p>
+        Future Improvements: 
+        <ul>
+            <li> Let ViewFrame handle all painting, unless Overridden. Use a true double-buffered approach overriding JAVA's update(Graphics g) method. Use a 
+            getDrawingImage() funtion to get the BufferedImage from the subclass of ViewFrame that will be drawn on from the actual drawn frame. Make certain Paintables are only called to repaint 
+            when necessary. Implement painting that blocks until completed.</li>
+            <li> Deprecate and phase out the getMaxBufferSize() method of the Paintable interface. Force all GUI'd agents to return a collection of Shapes when painted.
+            On intialization, paint them on a dummy canvas that either (1) represents the max screen size or (2) recomputes the automatically computed buffer size
+            on every increasing screen size request from the GUI-user. Use this collection to auto-compute the max required buffer size. </li>
+            <li> Add zoom functionality.</li>
+            <li> Optimize painting by repainting only affected areas of the canvas by using the Collection of Shapes each Paintable returns.</li>
+            <li> Use a MediaTrack to guarantee/block all progress until the Image has been fully painted (probably not necessary since we aren't getting data from over
+            a network but this does provide a nice guarantee). </li>
+            <li> When using a BufferedImage approach, create an Image once for the background and redraw background only when the user resizes or toggle the drawSpace or drawBoundingBox
+            methods of FUSEGUI.</li>
+            <li> Create a method by which the FUSEGUI "remembers" how to position its windows to the users-liking.</li>
+            <li> Add the ability to create a new View dynamically. </li>
+        </ul>
+        
+        <p>
+            <H2> Some Examples are provided </H2>
+            <ul>
+                <li> fuse.examples.bug_gui The Bug GUI Example (Reflection) </li>
+                <li> fuse.examples.airplanes_gui The Airplane GUI Example (Reflection, True Type Fonts)</li>
+            </ul>
+        </p>
+
+    </body>
+</html>
