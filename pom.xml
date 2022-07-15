@@ -30,7 +30,7 @@
         <dependency>
             <groupId>com.github.jpr86</groupId>
             <artifactId>JRandom</artifactId>
-            <version>1.2</version>
+            <version>1.3</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/javax.jlfgr/jlfgr -->
         <dependency>
