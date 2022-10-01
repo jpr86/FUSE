@@ -12,7 +12,7 @@
         </repository>
         <repository>
             <id>Freehep</id>
-            <url>http://java.freehep.org/maven2/</url>
+            <url>https://java.freehep.org/maven2/</url>
         </repository>
     </repositories>
     <dependencies>
